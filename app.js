@@ -63,8 +63,30 @@ function filterTodo(e) {
       case "all":
         todo.style.display = "flex";
         break;
-      case 'completed':
-        if(to)
+      case "completed":
+        if (todo.classList.contains("completed")) {
+          todo.style.display = "flex";
+        } else {
+          todo.style.display = "none";
+        }
+        break;
+      case "uncompleted":
+        if (!todo.classList.contains("completed")) {
+          todo.style.display = "flex";
+        } else {
+          todo.style.display = "none";
+        }
+        break;
     }
   });
+}
+
+function saveLocalTodos(todo) {
+  //CHECK---HEY Do I already have anything in there?
+  let todos;
+  if (localStorage.getItem("todos") === null) {
+    todos = [];
+  } else {
+    todos = JSON.parse(localStorage.getItem("todos"));
+  }
 }
